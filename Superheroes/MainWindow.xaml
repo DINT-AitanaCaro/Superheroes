@@ -5,39 +5,33 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Superheroes"
         mc:Ignorable="d"
-        Title="Superhéroes" Height="450" Width="800">
+        Title="Superhéroes" Height="500" Width="700"  MinHeight="500" MinWidth="700">
     <Window.Resources>
         <Style TargetType="Image" x:Key="superheroType">
-            <Setter Property="Margin" Value="8"/>
-            <Setter Property="Width" Value="40"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Width" Value="35"/>
         </Style>
         <local:BackgroundColorConverter x:Key="conversorFondo"/>
-    </Window.Resources>
-    <Grid x:Name="superheroeGrid" Background="{Binding Path=Heroe, Converter={StaticResource conversorFondo}}">
-        <Grid.RowDefinitions>
-            <RowDefinition></RowDefinition>
-            <RowDefinition Height="7*"></RowDefinition>
-            <RowDefinition></RowDefinition>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-        </Grid.ColumnDefinitions>
+        <local:VengadorConverter x:Key="vengadorConversor"/>
+        <local:XmenConverter x:Key="xmenConversor"/>
 
-        <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding Path=Nombre}" Foreground="White" FontWeight="Bold" FontSize="40" Margin="10">
-            <TextBlock.Effect>
-                <DropShadowEffect/>
-            </TextBlock.Effect>
-        </TextBlock>
-        <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top">
-            <Image Source="assets/avengers.png" Style="{StaticResource superheroType}"></Image>
-            <Image Source="assets/avengers.png" Style="{StaticResource superheroType}"></Image>
-        </StackPanel>
-        <Image  Source="{Binding Path=Imagen}" Stretch="Fill" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="10"/>
-        <StackPanel  Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Image x:Name="arrowLeftImage" Source="assets/arrow.png" Style="{StaticResource superheroType}" MouseLeftButtonDown="arrowLeftImage_MouseLeftButtonDown"></Image>
-            <TextBlock x:Name="superheroeNumberTextBlock" Text="1/3" FontSize="25" FontWeight="Bold" VerticalAlignment="Center"/>
-            <Image x:Name="arrowRightImage" Source="assets/arrow.png" Style="{StaticResource superheroType}" RenderTransformOrigin="0.5,0.5" MouseLeftButtonDown="arrowRightImage_MouseLeftButtonDown" >
+    </Window.Resources>
+    <DockPanel x:Name="superheroeGrid" Background="{Binding Path=Heroe, Converter={StaticResource conversorFondo}}">
+        <DockPanel DockPanel.Dock="Top" LastChildFill="False" Margin="10,5,10,0">
+            <TextBlock DockPanel.Dock="Left" Text="{Binding Path=Nombre}" Foreground="White" FontWeight="Bold" FontSize="40"  >
+                <TextBlock.Effect>
+                    <DropShadowEffect/>
+                </TextBlock.Effect>
+            </TextBlock>
+            <Image DockPanel.Dock="Right" Source="{Binding Path=Xmen, Converter={StaticResource xmenConversor}}" Style="{StaticResource superheroType}"></Image>
+            <Image DockPanel.Dock="Right" Source="{Binding Path=Vengador, Converter={StaticResource vengadorConversor}}" Style="{StaticResource superheroType}"></Image>
+            
+        </DockPanel>
+
+        <StackPanel DockPanel.Dock="Bottom"  Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
+            <Image x:Name="arrowLeftImage" Source="assets/arrow.png" Width="25" MouseLeftButtonDown="arrowLeftImage_MouseLeftButtonDown"></Image>
+            <TextBlock x:Name="superheroeNumberTextBlock" Tag="0" Text="1/3" FontSize="20" FontWeight="Bold" VerticalAlignment="Top" Margin="3,0,3,0"/>
+            <Image x:Name="arrowRightImage" Source="assets/arrow.png" Width="25" RenderTransformOrigin="0.5,0.5" MouseLeftButtonDown="arrowRightImage_MouseLeftButtonDown" >
                 <Image.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform ScaleY="1" ScaleX="-1"/>
@@ -48,5 +42,6 @@
                 </Image.RenderTransform>
             </Image>
         </StackPanel>
-    </Grid>
+        <Image  Source="{Binding Path=Imagen}" Stretch="UniformToFill" Margin="10"/>
+    </DockPanel>
 </Window>
