@@ -21,21 +21,27 @@ namespace Superheroes
     /// </summary>
     public partial class MainWindow : Window
     {
+        int nSuperhero = 0;
+        List<Superheroe> superheroes = Superheroe.GetSamples();
         public MainWindow()
         {
             InitializeComponent();
-            List<Superheroe> superheroes = Superheroe.GetSamples();
-            superheroeGrid.DataContext = superheroes[0];
+            superheroeGrid.DataContext = superheroes[nSuperhero];
         }
 
-        private void arrowRightImage_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void arrowImage_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-
-        }
-
-        private void arrowLeftImage_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-
+            Image img = ((Image)sender);
+            if (((Image)sender).Tag.ToString() == "+")
+            {
+                if (nSuperhero + 1 < 3) nSuperhero++;
+            }
+            else
+            {
+                if (nSuperhero - 1 > -1) nSuperhero--;
+            }
+            superheroeGrid.DataContext = superheroes[nSuperhero];
+            superheroeNumberTextBlock.Text = $"{nSuperhero + 1}/3";
         }
     }
 }

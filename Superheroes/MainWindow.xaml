@@ -9,11 +9,10 @@
     <Window.Resources>
         <Style TargetType="Image" x:Key="superheroType">
             <Setter Property="Margin" Value="5"/>
-            <Setter Property="Width" Value="35"/>
+            <Setter Property="Width" Value="40"/>
         </Style>
         <local:BackgroundColorConverter x:Key="conversorFondo"/>
-        <local:VengadorConverter x:Key="vengadorConversor"/>
-        <local:XmenConverter x:Key="xmenConversor"/>
+        <local:HeroGroupConverter x:Key="heroGroupConversor"/>
 
     </Window.Resources>
     <DockPanel x:Name="superheroeGrid" Background="{Binding Path=Heroe, Converter={StaticResource conversorFondo}}">
@@ -23,15 +22,15 @@
                     <DropShadowEffect/>
                 </TextBlock.Effect>
             </TextBlock>
-            <Image DockPanel.Dock="Right" Source="{Binding Path=Xmen, Converter={StaticResource xmenConversor}}" Style="{StaticResource superheroType}"></Image>
-            <Image DockPanel.Dock="Right" Source="{Binding Path=Vengador, Converter={StaticResource vengadorConversor}}" Style="{StaticResource superheroType}"></Image>
+            <Image DockPanel.Dock="Right" Source="assets/xmen.png" Visibility="{Binding Path=Xmen, Converter={StaticResource heroGroupConversor}}" Style="{StaticResource superheroType}"></Image>
+            <Image DockPanel.Dock="Right" Source="assets/avengers.png" Visibility="{Binding Path=Vengador, Converter={StaticResource heroGroupConversor}}" Style="{StaticResource superheroType}"></Image>
             
         </DockPanel>
 
         <StackPanel DockPanel.Dock="Bottom"  Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
-            <Image x:Name="arrowLeftImage" Source="assets/arrow.png" Width="25" MouseLeftButtonDown="arrowLeftImage_MouseLeftButtonDown"></Image>
+            <Image x:Name="arrowLeftImage" Tag="-"  Source="assets/arrow.png" Width="25" MouseLeftButtonDown="arrowImage_MouseLeftButtonDown"></Image>
             <TextBlock x:Name="superheroeNumberTextBlock" Tag="0" Text="1/3" FontSize="20" FontWeight="Bold" VerticalAlignment="Top" Margin="3,0,3,0"/>
-            <Image x:Name="arrowRightImage" Source="assets/arrow.png" Width="25" RenderTransformOrigin="0.5,0.5" MouseLeftButtonDown="arrowRightImage_MouseLeftButtonDown" >
+            <Image x:Name="arrowRightImage" Tag="+" Source="assets/arrow.png" Width="25" RenderTransformOrigin="0.5,0.5" MouseLeftButtonDown="arrowImage_MouseLeftButtonDown" >
                 <Image.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform ScaleY="1" ScaleX="-1"/>

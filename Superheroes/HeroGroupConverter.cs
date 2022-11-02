@@ -1,24 +1,16 @@
 ﻿using System;
 using System.Globalization;
+using System.Windows;
 using System.Windows.Data;
-using System.Windows.Media.Imaging;
 
 namespace Superheroes
 {
-    class XmenConverter : IValueConverter
+    class HeroGroupConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            BitmapImage bi3 = new BitmapImage();
-
-            if ((bool)value)
-            {
-                bi3.BeginInit();
-                bi3.UriSource = new Uri("assets/xmen.png", UriKind.Relative);
-                bi3.EndInit();
-                return bi3;
-            }
-            return value;
+            if ((bool)value) return Visibility.Visible;
+            else return Visibility.Collapsed;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
