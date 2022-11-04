@@ -1,4 +1,5 @@
 ﻿using Superheroes.Modelo;
+using Superheroes.VistaModelo;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,25 +24,23 @@ namespace Superheroes
     {
         int nSuperhero = 0;
         List<Superheroe> superheroes = Superheroe.GetSamples();
+        private MainWindowVM vm = new MainWindowVM();
         public MainWindow()
         {
             InitializeComponent();
-            superheroeGrid.DataContext = superheroes[nSuperhero];
+            this.DataContext = vm;
         }
 
         private void arrowImage_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            Image img = ((Image)sender);
             if (((Image)sender).Tag.ToString() == "+")
             {
-                if (nSuperhero + 1 < 3) nSuperhero++;
+                vm.Siguiente();
             }
             else
             {
-                if (nSuperhero - 1 > -1) nSuperhero--;
+                vm.Anterior();
             }
-            superheroeGrid.DataContext = superheroes[nSuperhero];
-            superheroeNumberTextBlock.Text = $"{nSuperhero + 1}/3";
         }
     }
 }

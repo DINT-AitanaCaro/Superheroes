@@ -15,21 +15,23 @@
         <local:HeroGroupConverter x:Key="heroGroupConversor"/>
 
     </Window.Resources>
-    <DockPanel x:Name="superheroeGrid" Background="{Binding Path=Heroe, Converter={StaticResource conversorFondo}}">
+    <DockPanel x:Name="superheroeGrid" Background="{Binding Path=HeroeActual.Heroe, Converter={StaticResource conversorFondo}}">
         <DockPanel DockPanel.Dock="Top" LastChildFill="False" Margin="10,5,10,0">
-            <TextBlock DockPanel.Dock="Left" Text="{Binding Path=Nombre}" Foreground="White" FontWeight="Bold" FontSize="40"  >
+            <TextBlock DockPanel.Dock="Left" Text="{Binding Path=HeroeActual.Nombre}" Foreground="White" FontWeight="Bold" FontSize="40"  >
                 <TextBlock.Effect>
                     <DropShadowEffect/>
                 </TextBlock.Effect>
             </TextBlock>
-            <Image DockPanel.Dock="Right" Source="assets/xmen.png" Visibility="{Binding Path=Xmen, Converter={StaticResource heroGroupConversor}}" Style="{StaticResource superheroType}"></Image>
-            <Image DockPanel.Dock="Right" Source="assets/avengers.png" Visibility="{Binding Path=Vengador, Converter={StaticResource heroGroupConversor}}" Style="{StaticResource superheroType}"></Image>
+            <Image DockPanel.Dock="Right" Source="assets/xmen.png" Visibility="{Binding Path=HeroeActual.Xmen, Converter={StaticResource heroGroupConversor}}" Style="{StaticResource superheroType}"></Image>
+            <Image DockPanel.Dock="Right" Source="assets/avengers.png" Visibility="{Binding Path=HeroeActual.Vengador, Converter={StaticResource heroGroupConversor}}" Style="{StaticResource superheroType}"></Image>
             
         </DockPanel>
 
         <StackPanel DockPanel.Dock="Bottom"  Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
             <Image x:Name="arrowLeftImage" Tag="-"  Source="assets/arrow.png" Width="25" MouseLeftButtonDown="arrowImage_MouseLeftButtonDown"></Image>
-            <TextBlock x:Name="superheroeNumberTextBlock" Tag="0" Text="1/3" FontSize="20" FontWeight="Bold" VerticalAlignment="Top" Margin="3,0,3,0"/>
+            <TextBlock x:Name="currentSuperheroeTextBlock" Tag="0" Text="{Binding Path=Posicion}" FontSize="20" FontWeight="Bold" VerticalAlignment="Top" Margin="3,0,3,0"/>
+            <TextBlock  Tag="0" Text="/" FontSize="20" FontWeight="Bold" VerticalAlignment="Top" Margin="3,0,3,0"/>
+            <TextBlock x:Name="totalSuperheroeNumberTextBlock" Tag="0" Text="{Binding Path=TotalHeroes}" FontSize="20" FontWeight="Bold" VerticalAlignment="Top" Margin="3,0,3,0"/>
             <Image x:Name="arrowRightImage" Tag="+" Source="assets/arrow.png" Width="25" RenderTransformOrigin="0.5,0.5" MouseLeftButtonDown="arrowImage_MouseLeftButtonDown" >
                 <Image.RenderTransform>
                     <TransformGroup>
@@ -41,6 +43,6 @@
                 </Image.RenderTransform>
             </Image>
         </StackPanel>
-        <Image  Source="{Binding Path=Imagen}" Stretch="UniformToFill" Margin="10"/>
+        <Image  Source="{Binding Path=HeroeActual.Imagen}" Stretch="UniformToFill" Margin="10"/>
     </DockPanel>
 </Window>
