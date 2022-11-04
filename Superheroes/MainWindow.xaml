@@ -60,10 +60,31 @@
                 </DataTrigger>
             </Style.Triggers>
         </Style>
+        <Style TargetType="TextBlock" x:Key="nombre">
+            <Setter Property="FontSize" Value="30"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Style.Triggers>
+                <EventTrigger RoutedEvent="MouseEnter">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetProperty="FontSize" To="50" Duration="0:0:1"></DoubleAnimation>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="MouseLeave">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetProperty="FontSize" To="30" Duration="0:0:1"></DoubleAnimation>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Style.Triggers>
+        </Style>
     </Window.Resources>
     <DockPanel x:Name="superheroeGrid" Style="{StaticResource mainContainer}">
         <DockPanel DockPanel.Dock="Top" LastChildFill="False" Margin="10,5,10,0">
-            <TextBlock DockPanel.Dock="Left" Text="{Binding Path=HeroeActual.Nombre}" Foreground="White" FontWeight="Bold" FontSize="40"  >
+            <TextBlock DockPanel.Dock="Left" Text="{Binding Path=HeroeActual.Nombre}" Style="{StaticResource nombre}" >
                 <TextBlock.Effect>
                     <DropShadowEffect/>
                 </TextBlock.Effect>
