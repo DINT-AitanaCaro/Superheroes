@@ -11,12 +11,8 @@
             <Setter Property="Margin" Value="5"/>
             <Setter Property="Width" Value="40"/>
             <Setter Property="Visibility" Value="Collapsed"/>
-            <Style.Triggers>
-                <DataTrigger Binding="{Binding Path=HeroeActual.Xmen}" Value="True">
-                    <Setter Property="Visibility" Value="Visible"/>
-                </DataTrigger>
-            </Style.Triggers>
         </Style>
+        
         <Style TargetType="Image" x:Key="xmen" BasedOn="{StaticResource superheroType}">
             <Style.Triggers>
                 <DataTrigger Binding="{Binding Path=HeroeActual.Xmen}" Value="True">
@@ -24,6 +20,7 @@
                 </DataTrigger>
             </Style.Triggers>
         </Style>
+        
         <Style TargetType="Image" x:Key="vengador" BasedOn="{StaticResource superheroType}">
             <Style.Triggers>
                 <DataTrigger Binding="{Binding Path=HeroeActual.Vengador}" Value="True">
