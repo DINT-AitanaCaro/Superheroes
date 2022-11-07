@@ -22,7 +22,6 @@ namespace Superheroes
     /// </summary>
     public partial class MainWindow : Window
     {
-        int nSuperhero = 0;
         List<Superheroe> superheroes = Superheroe.GetSamples();
         private MainWindowVM vm = new MainWindowVM();
         public MainWindow()
