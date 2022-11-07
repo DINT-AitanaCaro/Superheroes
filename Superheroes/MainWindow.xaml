@@ -61,21 +61,21 @@
             </Style.Triggers>
         </Style>
         <Style TargetType="TextBlock" x:Key="nombre">
-            <Setter Property="FontSize" Value="30"/>
+            <Setter Property="FontSize" Value="35"/>
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="FontWeight" Value="Bold"/>
             <Style.Triggers>
                 <EventTrigger RoutedEvent="MouseEnter">
                     <BeginStoryboard>
                         <Storyboard>
-                            <DoubleAnimation Storyboard.TargetProperty="FontSize" To="50" Duration="0:0:1"></DoubleAnimation>
+                            <DoubleAnimation Storyboard.TargetProperty="FontSize" To="45" Duration="0:0:1"></DoubleAnimation>
                         </Storyboard>
                     </BeginStoryboard>
                 </EventTrigger>
                 <EventTrigger RoutedEvent="MouseLeave">
                     <BeginStoryboard>
                         <Storyboard>
-                            <DoubleAnimation Storyboard.TargetProperty="FontSize" To="30" Duration="0:0:1"></DoubleAnimation>
+                            <DoubleAnimation Storyboard.TargetProperty="FontSize" To="35" Duration="0:0:1"></DoubleAnimation>
                         </Storyboard>
                     </BeginStoryboard>
                 </EventTrigger>
